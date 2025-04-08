@@ -1,0 +1,104 @@
+<mat-card class="theme-controls-card">
+  <mat-card-header>
+    <mat-card-title>Theme Settings</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="theme-mode-section">
+      <label class="theme-section-label">Theme Mode</label>
+      <mat-button-toggle-group
+        [value]="themeMode"
+        (change)="updateThemeMode($event.value)"
+      >
+        <mat-button-toggle
+          *ngFor="let mode of themeModes"
+          [value]="mode.value"
+        >
+          {{ mode.label }}
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+
+    <div class="colors-section">
+      <div class="theme-section-header">
+        <label class="theme-section-label">Colors</label>
+        <button
+          mat-button
+          color="primary"
+          (click)="toggleAdvanced()"
+        >
+          {{ showAdvanced ? 'Hide Advanced' : 'Show Advanced' }}
+        </button>
+      </div>
+
+      <!-- Primary color (always visible) -->
+      <app-color-picker
+        [label]="'Primary Color'"
+        [color]="primaryColor"
+        (colorChange)="$event !== null && updatePrimaryColor($event)"
+      >
+      </app-color-picker>
+
+      <!-- Advanced color options -->
+      <div
+        class="advanced-colors"
+        *ngIf="showAdvanced"
+      >
+        <app-color-picker
+          [label]="'Secondary Color'"
+          [color]="secondaryColor || ''"
+          [showClear]="true"
+          (colorChange)="$event !== null && updateSecondaryColor($event)"
+          (colorCleared)="clearSecondaryColor()"
+        >
+        </app-color-picker>
+
+        <app-color-picker
+          [label]="'Tertiary Color'"
+          [color]="tertiaryColor || ''"
+          [showClear]="true"
+          (colorChange)="$event !== null && updateTertiaryColor($event)"
+          (colorCleared)="clearTertiaryColor()"
+        >
+        </app-color-picker>
+
+        <app-color-picker
+          [label]="'Neutral Color'"
+          [color]="neutralColor || ''"
+          [showClear]="true"
+          (colorChange)="$event !== null && updateNeutralColor($event)"
+          (colorCleared)="clearNeutralColor()"
+        >
+        </app-color-picker>
+
+        <app-color-picker
+          [label]="'Neutral Variant Color'"
+          [color]="neutralVariantColor || ''"
+          [showClear]="true"
+          (colorChange)="$event !== null && updateNeutralVariantColor($event)"
+          (colorCleared)="clearNeutralVariantColor()"
+        >
+        </app-color-picker>
+
+        <app-color-picker
+          [label]="'Error Color'"
+          [color]="errorColor || ''"
+          [showClear]="true"
+          (colorChange)="$event !== null && updateErrorColor($event)"
+          (colorCleared)="clearErrorColor()"
+        >
+        </app-color-picker>
+      </div>
+
+      <div class="actions">
+        <button
+          mat-button
+          color="primary"
+          (click)="resetToDefaults()"
+        >
+          Reset to Defaults
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,143 @@
+<div class="palette-demo-container">
+  <h2 class="palette-demo-title">Material 3 Color System</h2>
+
+  <div class="token-sections">
+    <!-- Primary Token Section -->
+    <div class="token-section">
+      <h3 class="section-title">Primary Colors</h3>
+      <div class="token-chips">
+        <div
+          *ngFor="let token of primaryTokens"
+          class="token-chip"
+          [style.background-color]="getColorValue(token.variable)"
+          [style.color]="getContrastColor(getColorValue(token.variable))"
+        >
+          <div class="token-name">{{ token.name }}</div>
+          <div class="token-value">{{ getColorValue(token.variable) }}</div>
+          <div class="token-description">{{ token.description }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secondary Token Section -->
+    <div class="token-section">
+      <h3 class="section-title">Secondary Colors</h3>
+      <div class="token-chips">
+        <div
+          *ngFor="let token of secondaryTokens"
+          class="token-chip"
+          [style.background-color]="getColorValue(token.variable)"
+          [style.color]="getContrastColor(getColorValue(token.variable))"
+        >
+          <div class="token-name">{{ token.name }}</div>
+          <div class="token-value">{{ getColorValue(token.variable) }}</div>
+          <div class="token-description">{{ token.description }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tertiary Token Section -->
+    <div class="token-section">
+      <h3 class="section-title">Tertiary Colors</h3>
+      <div class="token-chips">
+        <div
+          *ngFor="let token of tertiaryTokens"
+          class="token-chip"
+          [style.background-color]="getColorValue(token.variable)"
+          [style.color]="getContrastColor(getColorValue(token.variable))"
+        >
+          <div class="token-name">{{ token.name }}</div>
+          <div class="token-value">{{ getColorValue(token.variable) }}</div>
+          <div class="token-description">{{ token.description }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Surface Token Section -->
+    <div class="token-section">
+      <h3 class="section-title">Surface Colors</h3>
+      <div class="token-chips">
+        <div
+          *ngFor="let token of surfaceTokens"
+          class="token-chip"
+          [style.background-color]="getColorValue(token.variable)"
+          [style.color]="getContrastColor(getColorValue(token.variable))"
+        >
+          <div class="token-name">{{ token.name }}</div>
+          <div class="token-value">{{ getColorValue(token.variable) }}</div>
+          <div class="token-description">{{ token.description }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error Token Section -->
+    <div class="token-section">
+      <h3 class="section-title">Error Colors</h3>
+      <div class="token-chips">
+        <div
+          *ngFor="let token of errorTokens"
+          class="token-chip"
+          [style.background-color]="getColorValue(token.variable)"
+          [style.color]="getContrastColor(getColorValue(token.variable))"
+        >
+          <div class="token-name">{{ token.name }}</div>
+          <div class="token-value">{{ getColorValue(token.variable) }}</div>
+          <div class="token-description">{{ token.description }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tonal Palettes -->
+  <h2 class="palette-demo-title">Tonal Palettes</h2>
+
+  <div class="tonal-sections">
+    <!-- Primary Tonal Palette -->
+    <div class="tonal-section">
+      <h3 class="section-title">Primary Tones</h3>
+      <div class="tonal-strips">
+        <div
+          *ngFor="let item of primaryTones"
+          class="tonal-strip"
+          [style.background-color]="item.color"
+          [style.color]="getContrastColor(item.color)"
+        >
+          <div class="tonal-value">{{ item.tone }}</div>
+          <div class="tonal-hex">{{ item.color }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secondary Tonal Palette -->
+    <div class="tonal-section">
+      <h3 class="section-title">Secondary Tones</h3>
+      <div class="tonal-strips">
+        <div
+          *ngFor="let item of secondaryTones"
+          class="tonal-strip"
+          [style.background-color]="item.color"
+          [style.color]="getContrastColor(item.color)"
+        >
+          <div class="tonal-value">{{ item.tone }}</div>
+          <div class="tonal-hex">{{ item.color }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tertiary Tonal Palette -->
+    <div class="tonal-section">
+      <h3 class="section-title">Tertiary Tones</h3>
+      <div class="tonal-strips">
+        <div
+          *ngFor="let item of tertiaryTones"
+          class="tonal-strip"
+          [style.background-color]="item.color"
+          [style.color]="getContrastColor(item.color)"
+        >
+          <div class="tonal-value">{{ item.tone }}</div>
+          <div class="tonal-hex">{{ item.color }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

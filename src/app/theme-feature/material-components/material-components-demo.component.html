@@ -1,0 +1,537 @@
+<div class="material-demo-container">
+  <h2 class="demo-section-title">Material Components with Dynamic Theming</h2>
+
+  <mat-card class="demo-card">
+    <mat-card-header>
+      <div
+        mat-card-avatar
+        class="demo-avatar"
+      ></div>
+      <mat-card-title>Material Form Elements</mat-card-title>
+      <mat-card-subtitle>Themed with Material 3 variables</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form
+        [formGroup]="demoForm"
+        class="demo-form"
+      >
+        <!-- Text Fields -->
+        <div class="form-section">
+          <h3 class="form-section-title">Text Fields</h3>
+
+          <mat-form-field
+            appearance="outline"
+            class="full-width"
+          >
+            <mat-label>Name</mat-label>
+            <input
+              matInput
+              formControlName="name"
+              placeholder="Your name"
+            />
+            <mat-icon matPrefix>person</mat-icon>
+            <mat-error *ngIf="demoForm.get('name')?.hasError('required')">
+              Name is required
+            </mat-error>
+            <mat-error *ngIf="demoForm.get('name')?.hasError('minlength')">
+              Name must be at least 3 characters
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field
+            appearance="outline"
+            class="full-width"
+          >
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              formControlName="email"
+              placeholder="your.email@example.com"
+            />
+            <mat-icon matPrefix>email</mat-icon>
+            <mat-hint>We'll never share your email</mat-hint>
+            <mat-error *ngIf="demoForm.get('email')?.hasError('required')">
+              Email is required
+            </mat-error>
+            <mat-error *ngIf="demoForm.get('email')?.hasError('email')">
+              Please enter a valid email address
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field
+            appearance="outline"
+            class="full-width"
+          >
+            <mat-label>Message</mat-label>
+            <textarea
+              matInput
+              formControlName="message"
+              rows="4"
+              placeholder="Your message"
+            ></textarea>
+          </mat-form-field>
+        </div>
+
+        <!-- Selection Controls -->
+        <div class="form-section">
+          <h3 class="form-section-title">Selection Controls</h3>
+
+          <mat-form-field
+            appearance="outline"
+            class="full-width"
+          >
+            <mat-label>Favorite Food</mat-label>
+            <mat-select formControlName="favoriteFood">
+              <mat-option
+                *ngFor="let food of foods"
+                [value]="food.value"
+              >
+                {{ food.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div class="checkbox-section">
+            <div>
+              <mat-checkbox
+                [checked]="allComplete"
+                [indeterminate]="someComplete() && !allComplete"
+                (change)="setAll($event.checked)"
+              >
+                {{ task.name }}
+              </mat-checkbox>
+            </div>
+
+            <div class="subtasks-container">
+              <mat-checkbox
+                *ngFor="let subtask of task.subtasks"
+                [(ngModel)]="subtask.completed"
+                [ngModelOptions]="{ standalone: true }"
+                (ngModelChange)="updateAllComplete()"
+              >
+                {{ subtask.name }}
+              </mat-checkbox>
+            </div>
+          </div>
+
+          <div class="radio-section">
+            <mat-label>Favorite Fruit:</mat-label>
+            <mat-radio-group
+              [(ngModel)]="favoriteFruit"
+              [ngModelOptions]="{ standalone: true }"
+            >
+              <mat-radio-button value="apple">Apple</mat-radio-button>
+              <mat-radio-button value="banana">Banana</mat-radio-button>
+              <mat-radio-button value="cherry">Cherry</mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+          <div class="form-row">
+            <mat-slide-toggle formControlName="enableNotifications">
+              Enable notifications
+            </mat-slide-toggle>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button
+        mat-button
+        (click)="submitForm()"
+        [disabled]="demoForm.invalid"
+      >
+        SUBMIT
+      </button>
+      <button
+        mat-button
+        type="reset"
+      >
+        RESET
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+  <!-- Button Examples -->
+  <mat-card class="demo-card">
+    <mat-card-header>
+      <mat-card-title>Buttons</mat-card-title>
+      <mat-card-subtitle>Various button styles</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="buttons-container">
+        <div class="button-row">
+          <h4>Basic Buttons</h4>
+          <button mat-button>Basic</button>
+          <button mat-button>Primary</button>
+          <button mat-button>Accent</button>
+          <button mat-button>Warn</button>
+          <button
+            mat-button
+            disabled
+          >
+            Disabled
+          </button>
+        </div>
+
+        <div class="button-row">
+          <h4>Raised Buttons</h4>
+          <button mat-raised-button>Basic</button>
+          <button
+            mat-raised-button
+            color="primary"
+          >
+            Primary
+          </button>
+          <button
+            mat-raised-button
+            color="accent"
+          >
+            Accent
+          </button>
+          <button
+            mat-raised-button
+            color="warn"
+          >
+            Warn
+          </button>
+          <button
+            mat-raised-button
+            disabled
+          >
+            Disabled
+          </button>
+        </div>
+
+        <div class="button-row">
+          <h4>Stroked Buttons</h4>
+          <button mat-stroked-button>Basic</button>
+          <button
+            mat-stroked-button
+            color="primary"
+          >
+            Primary
+          </button>
+          <button
+            mat-stroked-button
+            color="accent"
+          >
+            Accent
+          </button>
+          <button
+            mat-stroked-button
+            color="warn"
+          >
+            Warn
+          </button>
+          <button
+            mat-stroked-button
+            disabled
+          >
+            Disabled
+          </button>
+        </div>
+
+        <div class="button-row">
+          <h4>Flat Buttons</h4>
+          <button mat-flat-button>Basic</button>
+          <button
+            mat-flat-button
+            color="primary"
+          >
+            Primary
+          </button>
+          <button
+            mat-flat-button
+            color="accent"
+          >
+            Accent
+          </button>
+          <button
+            mat-flat-button
+            color="warn"
+          >
+            Warn
+          </button>
+          <button
+            mat-flat-button
+            disabled
+          >
+            Disabled
+          </button>
+        </div>
+
+        <div class="button-row">
+          <h4>Icon Buttons</h4>
+          <button
+            mat-icon-button
+            aria-label="Example icon button with a home icon"
+          >
+            <mat-icon>home</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="primary"
+            aria-label="Example icon button with a heart icon"
+          >
+            <mat-icon>favorite</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="accent"
+            aria-label="Example icon button with a share icon"
+          >
+            <mat-icon>share</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="warn"
+            aria-label="Example icon button with a delete icon"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            disabled
+            aria-label="Example icon button with a remove icon"
+          >
+            <mat-icon>clear</mat-icon>
+          </button>
+        </div>
+
+        <div class="button-row">
+          <h4>FAB Buttons</h4>
+          <button
+            mat-fab
+            color="primary"
+          >
+            <mat-icon>add</mat-icon>
+          </button>
+          <button
+            mat-fab
+            color="accent"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-fab
+            color="warn"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button
+            mat-fab
+            disabled
+          >
+            <mat-icon>clear</mat-icon>
+          </button>
+        </div>
+
+        <div class="button-row">
+          <h4>Mini FAB Buttons</h4>
+          <button
+            mat-mini-fab
+            color="primary"
+          >
+            <mat-icon>add</mat-icon>
+          </button>
+          <button
+            mat-mini-fab
+            color="accent"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-mini-fab
+            color="warn"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button
+            mat-mini-fab
+            disabled
+          >
+            <mat-icon>clear</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Navigation Components -->
+  <mat-card class="demo-card">
+    <mat-card-header>
+      <mat-card-title>Navigation</mat-card-title>
+      <mat-card-subtitle>Tabs, menu, and toggles</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <!-- Tabs -->
+      <div class="tabs-container">
+        <mat-tab-group (selectedTabChange)="announceTabChange($event.index)">
+          <mat-tab label="First Tab">
+            <div class="tab-content">
+              <h3>First Tab Content</h3>
+              <p>
+                This is the content of the first tab. Material 3 theme is applied to these tabs.
+              </p>
+            </div>
+          </mat-tab>
+          <mat-tab label="Second Tab">
+            <div class="tab-content">
+              <h3>Second Tab Content</h3>
+              <p>
+                This tab demonstrates the consistent theming across different Material components.
+              </p>
+            </div>
+          </mat-tab>
+          <mat-tab label="Third Tab">
+            <div class="tab-content">
+              <h3>Third Tab Content</h3>
+              <p>All components follow the Material 3 theme colors defined by our Theme Service.</p>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+
+      <!-- Menu -->
+      <div class="menu-container">
+        <h4>Menu Example</h4>
+        <button
+          mat-raised-button
+          [matMenuTriggerFor]="menu"
+          color="primary"
+        >
+          Open Menu
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <span>Option 1</span>
+          </button>
+          <button
+            mat-menu-item
+            disabled
+          >
+            <mat-icon>voicemail</mat-icon>
+            <span>Option 2</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>notifications_off</mat-icon>
+            <span>Option 3</span>
+          </button>
+        </mat-menu>
+      </div>
+
+      <!-- Button Toggle -->
+      <div class="toggle-container">
+        <h4>Button Toggle</h4>
+        <mat-button-toggle-group
+          [(ngModel)]="fontStyle"
+          [ngModelOptions]="{ standalone: true }"
+        >
+          <mat-button-toggle value="bold">
+            <mat-icon>format_bold</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle value="italic">
+            <mat-icon>format_italic</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle value="underline">
+            <mat-icon>format_underlined</mat-icon>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Progress Indicators -->
+  <mat-card class="demo-card">
+    <mat-card-header>
+      <mat-card-title>Progress Indicators</mat-card-title>
+      <mat-card-subtitle>Progress bars and spinners</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="progress-container">
+        <h4>Progress Bars</h4>
+        <mat-progress-bar
+          mode="determinate"
+          value="40"
+        ></mat-progress-bar>
+        <br />
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        <br />
+        <mat-progress-bar
+          mode="buffer"
+          value="60"
+          bufferValue="80"
+        ></mat-progress-bar>
+        <br />
+        <mat-progress-bar mode="query"></mat-progress-bar>
+      </div>
+
+      <div class="spinner-container">
+        <h4>Spinners</h4>
+        <div class="spinner-row">
+          <mat-spinner diameter="40"></mat-spinner>
+          <mat-spinner
+            color="accent"
+            diameter="40"
+          ></mat-spinner>
+          <mat-spinner
+            color="warn"
+            diameter="40"
+          ></mat-spinner>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Expansion Panels -->
+  <mat-card class="demo-card">
+    <mat-card-header>
+      <mat-card-title>Expansion Panels</mat-card-title>
+      <mat-card-subtitle>Collapsible containers</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Personal Information</mat-panel-title>
+            <mat-panel-description>User details</mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>
+            This panel contains information about a user. The panel styling is themed according to
+            Material 3 variables.
+          </p>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Account Settings</mat-panel-title>
+            <mat-panel-description>User preferences</mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>
+            This panel contains account settings. The panel styling is themed according to Material
+            3 variables.
+          </p>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Privacy Settings</mat-panel-title>
+            <mat-panel-description>Data sharing options</mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>
+            This panel contains privacy settings. The panel styling is themed according to Material
+            3 variables.
+          </p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card-content>
+  </mat-card>
+</div>

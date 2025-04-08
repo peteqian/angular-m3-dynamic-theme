@@ -1,0 +1,31 @@
+<div class="color-picker-container">
+  <div class="color-picker-label">{{ label }}</div>
+  <div class="color-picker-controls">
+    <input
+      type="color"
+      [formControl]="colorControl"
+      class="color-input"
+      (change)="colorChange.emit(colorControl.value)"
+      [value]="color"
+    />
+
+    <input
+      type="text"
+      [formControl]="colorControl"
+      class="hex-input"
+      placeholder="#RRGGBB"
+      (blur)="updateHexColor($event)"
+    />
+
+    <button
+      *ngIf="showClear"
+      mat-icon-button
+      color="primary"
+      class="clear-button"
+      (click)="clearColor()"
+      matTooltip="Clear color"
+    >
+      <mat-icon>clear</mat-icon>
+    </button>
+  </div>
+</div>
