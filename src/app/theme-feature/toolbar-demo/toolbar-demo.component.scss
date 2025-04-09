@@ -1,0 +1,100 @@
+.toolbar-demo-container {
+  padding: 24px;
+  background-color: var(--mat-sys-surface-container-lowest);
+  color: var(--mat-sys-on-surface);
+}
+
+.demo-section-title {
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--mat-sys-on-surface);
+}
+
+.toolbar-section {
+  margin-bottom: 32px;
+
+  h3 {
+    margin-bottom: 12px;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--mat-sys-on-surface);
+  }
+}
+
+.demo-toolbar {
+  border-radius: 8px;
+  overflow: hidden;
+  height: auto;
+  min-height: 56px;
+
+  &.multi-row {
+    padding: 0;
+  }
+}
+
+.toolbar-title {
+  margin-left: 12px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.navigation-tabs {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+
+  button {
+    margin-right: 8px;
+
+    mat-icon {
+      margin-right: 8px;
+    }
+  }
+}
+
+// Custom Material 3 toolbar styling
+.material3-toolbar {
+  background-color: var(--mat-sys-surface-container);
+  color: var(--mat-sys-on-surface);
+  border-bottom: 1px solid var(--mat-sys-outline-variant);
+  box-shadow: var(--mat-sys-level1);
+
+  .mat-icon {
+    color: var(--mat-sys-on-surface-variant);
+  }
+
+  button {
+    color: var(--mat-sys-primary);
+  }
+}
+
+// Add toolbar styles to the global styles.scss file
+:host ::ng-deep {
+  // Material 3 variable overrides for mat-toolbar
+  .mat-toolbar {
+    background-color: var(--mat-sys-primary);
+    color: var(--mat-sys-on-primary);
+  }
+
+  .mat-toolbar.mat-accent {
+    background-color: var(--mat-sys-secondary);
+    color: var(--mat-sys-on-secondary);
+  }
+
+  .mat-toolbar.mat-warn {
+    background-color: var(--mat-sys-error);
+    color: var(--mat-sys-on-error);
+  }
+
+  // High contrast enhancements
+  html[data-high-contrast='true'] {
+    .mat-toolbar {
+      border: 2px solid var(--mat-sys-outline);
+    }
+  }
+}

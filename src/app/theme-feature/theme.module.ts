@@ -24,13 +24,16 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { ToolbarDemoComponent } from './toolbar-demo/toolbar-demo.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
     ThemeControlsComponent,
     ColorPickerComponent,
     PaletteDemoComponent,
-    MaterialComponentsDemoComponent
+    MaterialComponentsDemoComponent,
+    ToolbarDemoComponent
   ],
   imports: [
     CommonModule,
@@ -51,13 +54,15 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatButtonToggleModule,
     MatExpansionModule,
     MatProgressSpinnerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatToolbarModule
   ],
   exports: [
     ThemeControlsComponent,
     ColorPickerComponent,
     PaletteDemoComponent,
-    MaterialComponentsDemoComponent
+    MaterialComponentsDemoComponent,
+    ToolbarDemoComponent
   ],
   providers: [Material3ThemeService]
 })
