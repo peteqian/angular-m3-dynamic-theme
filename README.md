@@ -1,6 +1,14 @@
 # AngularM3DynamicTheme
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.5.
+A dynamic Material 3 theming engine for Angular applications, providing runtime color theme generation according to Material Design 3 specifications.
+
+## Features
+
+- Dynamic Theme Generation: Generate complete Material 3 themes at runtime
+- Color Customization: Modify primary, secondary, tertiary, neutral, neutral variant, and error colors
+- Material Design 3 Algorithms: Uses @material/material-color-utilities to implement proper Material 3 color generation
+- Visual Theme Demonstration: Includes components to visualize color palettes and tokens
+- Component Showcase: Features Material components with the dynamically generated theme applied
 
 ## Development server
 
